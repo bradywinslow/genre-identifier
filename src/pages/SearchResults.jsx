@@ -1,15 +1,13 @@
 import Header from '../components/Header';
 import SubHeader from '../components/SubHeader';
-import Input from '../components/Input';
-import Button from '../components/Button';
+import SearchForm from '../components/SearchForm';
 
 export default function SearchResults() {
     return (
         <>
             <Header />
             <SubHeader />
-            <Input />
-            <Button value='Search Again'/>
+            <SearchForm value='Search Again'/>
             <p>Results: </p>
         </>
     )
