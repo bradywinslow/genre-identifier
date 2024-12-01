@@ -1,4 +1,4 @@
-async function getData() {
+async function getData(searchQuery) {
     const url = `http://musicbrainz.org/ws/2/release/?query=artist:${searchQuery}&inc=genres&fmt=json`;
     try {
       const response = await fetch(url);

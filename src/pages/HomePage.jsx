@@ -9,7 +9,7 @@ export default function HomePage() {
             <Header />
             <SubHeader />
             <Input />
-            <Button />
+            <Button value='Search'/>
         </>
     )
 }
