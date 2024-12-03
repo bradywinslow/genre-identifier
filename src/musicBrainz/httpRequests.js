@@ -1,15 +1,16 @@
-async function getData(searchQuery) {
-    const url = `http://musicbrainz.org/ws/2/release/?query=artist:${searchQuery}&inc=genres&fmt=json`;
+const getData = async (searchTerm) => {
+    const urlToFetch = `http://musicbrainz.org/ws/2/artist/?query=${searchTerm}&inc=genres&fmt=json`;
     try {
-      const response = await fetch(url);
+      const response = await fetch(urlToFetch);
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }
   
       const json = await response.json();
-      console.log(json);
+      return json;
     } catch (error) {
       console.error(error.message);
+      return null;
     }
 }
 

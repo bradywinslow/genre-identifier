@@ -1,14 +1,13 @@
 import Header from '../components/Header';
-import SubHeader from '../components/SubHeader';
 import SearchForm from '../components/SearchForm';
+import SearchResults from '../components/SearchResults';
 
-export default function SearchResults() {
+export default function ResultsPage() {
     return (
         <>
             <Header />
-            <SubHeader />
             <SearchForm value='Search Again'/>
-            <p>Results: </p>
+            <SearchResults />
         </>
     )
 }

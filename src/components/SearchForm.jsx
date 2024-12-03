@@ -1,27 +1,40 @@
 import { useNavigate } from "react-router";
 import { useState } from 'react';
+import { getData } from '../musicBrainz/httpRequests';
 
 export default function SearchForm({ value }) {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
-
-    function handleInputChange(event) {
+    // const [searchResults, setSearchResults] = useState(null);
+    
+    const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
     }
 
-    function handleSearch(event) {
+    const handleSearch = async (searchTerm) => {
+        const results = await getData(searchTerm);
+        return results;
+    }
+
+    const handleSubmission = async (event) => {
         event.preventDefault();
         if (searchTerm) {
-            navigate('/results');
+            const data = await handleSearch(searchTerm);
+            if (data) {
+                navigate('/results', { state: { searchResults: data } });
+            } else {
+                console.error('No data returned from API.');
+            }
         }
     }
 
     return (
-        <form onSubmit={handleSearch}>
+        <form onSubmit={handleSubmission}>
             <input
                 type='search'
                 id='artist'
                 name='artist'
+                placeholder='Search an artist to discover their genre(s)'
                 value={searchTerm}
                 onChange={handleInputChange}
             />
