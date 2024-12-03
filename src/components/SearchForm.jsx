@@ -2,10 +2,9 @@ import { useNavigate } from "react-router";
 import { useState } from 'react';
 import { getData } from '../musicBrainz/httpRequests';
 
-export default function SearchForm({ value }) {
+export default function SearchForm() {
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
-    // const [searchResults, setSearchResults] = useState(null);
     
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
@@ -22,6 +21,7 @@ export default function SearchForm({ value }) {
             const data = await handleSearch(searchTerm);
             if (data) {
                 navigate('/results', { state: { searchResults: data } });
+                setSearchTerm('');
             } else {
                 console.error('No data returned from API.');
             }
@@ -42,7 +42,7 @@ export default function SearchForm({ value }) {
                 type='submit'
                 id='submit'
                 name='submit'
-                value={value}
+                value='Search'
             />
         </form>
     )

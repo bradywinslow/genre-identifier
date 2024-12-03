@@ -6,7 +6,7 @@ export default function ResultsPage() {
     return (
         <>
             <Header />
-            <SearchForm value='Search Again'/>
+            <SearchForm />
             <SearchResults />
         </>
     )

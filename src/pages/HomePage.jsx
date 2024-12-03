@@ -5,7 +5,7 @@ export default function HomePage() {
     return (
         <>
             <Header />
-            <SearchForm value='Search' />
+            <SearchForm />
         </>
     )
 }
