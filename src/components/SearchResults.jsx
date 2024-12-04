@@ -6,23 +6,32 @@ export default function SearchResults() {
     const { searchResults } = location.state || {};
     
     const artist = searchResults.artists[0];
+    const count = searchResults.count;
 
     return (
         <div>
-            {searchResults ? (
+            {artist && count > 0 && (
                 <div>
                     <h2>{artist.name}</h2>
-                    <h3>Genres:</h3>
                     <div>
-                        {artist.tags.map((tag, index) => (
-                            <span key={index}>
-                                {tag.name}<br></br>
-                            </span>
-                        ))}
+                        <h3>Genres:</h3>
+                        {artist.tags ? (
+                            artist.tags.map((tag, index) => (
+                                <span key={index}>
+                                    {tag.name}<br></br>
+                                </span>
+                            ))
+                        ) : (
+                            <p>no associated genres</p>
+                        )}
                     </div>
                 </div>
-            ) : (
-                <p>No results found</p>
+            )}
+
+            {count === 0 && artist.length === 0 && (
+                <div>
+                    <h4>No results found</h4>
+                </div>
             )}
         </div>
     )

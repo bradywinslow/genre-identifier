@@ -22,6 +22,7 @@ export default function SearchForm() {
             if (data) {
                 navigate('/results', { state: { searchResults: data } });
                 setSearchTerm('');
+                console.log(data);
             } else {
                 console.error('No data returned from API.');
             }
