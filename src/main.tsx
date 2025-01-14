@@ -1,13 +1,12 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router';
 import { StrictMode } from 'react'
-import App from './App.jsx'
+import App from './App.js'
 import ResultsPage from './pages/ResultsPage';
 
 const root = document.getElementById('root');
 
-ReactDOM.createRoot(root).render(
+ReactDOM.createRoot(root!).render(
   <BrowserRouter>
     <StrictMode>
       <Routes>

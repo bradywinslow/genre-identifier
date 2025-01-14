@@ -6,16 +6,16 @@ export default function SearchForm() {
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
     
-    const handleInputChange = (event) => {
+    const handleInputChange = (event: any) => {
         setSearchTerm(event.target.value);
     }
 
-    const handleSearch = async (searchTerm) => {
+    const handleSearch = async (searchTerm: string) => {
         const results = await getData(searchTerm);
         return results;
     }
 
-    const handleSubmission = async (event) => {
+    const handleSubmission = async (event: any) => {
         event.preventDefault();
         if (searchTerm) {
             const data = await handleSearch(searchTerm);

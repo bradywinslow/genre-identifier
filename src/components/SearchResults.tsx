@@ -16,7 +16,7 @@ export default function SearchResults() {
                     <div>
                         <h3>Genres:</h3>
                         {artist.tags ? (
-                            artist.tags.map((tag, index) => (
+                            artist.tags.map((tag: any, index: number) => (
                                 <span key={index}>
                                     {tag.name}<br></br>
                                 </span>
