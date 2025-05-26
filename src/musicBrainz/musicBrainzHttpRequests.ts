@@ -1,4 +1,4 @@
-const getData = async (searchTerm: string) => {
+const getMusicBrainzData = async (searchTerm: string) => {
     const urlToFetch = `http://musicbrainz.org/ws/2/artist/?query=${searchTerm}&inc=genres&fmt=json`;
     try {
       const response = await fetch(urlToFetch);
@@ -14,4 +14,4 @@ const getData = async (searchTerm: string) => {
     }
 }
 
-export { getData };
+export { getMusicBrainzData };

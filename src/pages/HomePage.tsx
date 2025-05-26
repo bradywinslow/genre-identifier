@@ -1,11 +1,18 @@
 import Header from '../components/Header';
-import SearchForm from '../components/SearchForm';
+import SpotifySearchForm from '../components/SpotifySearchForm';
+import SpotifyLoginButton from '../components/SpotifyLoginButton';
 
 export default function HomePage() {
+    let isAuthenticated = localStorage.getItem('isLoggedIn');
+    
     return (
         <>
             <Header />
-            <SearchForm />
+            {isAuthenticated ? (
+                <SpotifySearchForm />
+            ) : (
+                <SpotifyLoginButton />
+            )}
         </>
     )
 }

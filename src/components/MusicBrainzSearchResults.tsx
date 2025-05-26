@@ -3,10 +3,10 @@ import { useLocation } from 'react-router';
 export default function SearchResults() {
     const location = useLocation();
 
-    const { searchResults } = location.state || {};
+    const { musicBrainzSearchResults } = location.state || {};
     
-    const artist = searchResults.artists[0];
-    const count = searchResults.count;
+    const artist = musicBrainzSearchResults.artists[0];
+    const count = musicBrainzSearchResults.count;
 
     return (
         <div>

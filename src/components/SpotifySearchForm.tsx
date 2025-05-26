@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { useState } from 'react';
-import { getData } from '../musicBrainz/httpRequests';
+import { getSpotifyData } from '../spotify/spotifyHttpRequests';
 
 export default function SearchForm() {
     const navigate = useNavigate();
@@ -11,7 +11,7 @@ export default function SearchForm() {
     }
 
     const handleSearch = async (searchTerm: string) => {
-        const results = await getData(searchTerm);
+        const results = await getSpotifyData(searchTerm);
         return results;
     }
 
@@ -20,7 +20,12 @@ export default function SearchForm() {
         if (searchTerm) {
             const data = await handleSearch(searchTerm);
             if (data) {
-                navigate('/results', { state: { searchResults: data } });
+                navigate('/results', {
+                    state: {
+                        spotifySearchResults: data,
+                        searchTerm
+                    }
+                });
                 setSearchTerm('');
                 console.log(data);
             } else {
