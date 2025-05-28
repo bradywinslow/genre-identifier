@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { handlePkceLogin, exchangeAuthCodeForToken } from '../spotify/spotifypkceAuthorization';
 
-export default function SpotifyLoginButton() {
+type SpotifyLoginButtonProps = {
+    className?: string;
+};
+
+export default function SpotifyLoginButton({ className }: SpotifyLoginButtonProps) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isAuthenticating, setIsAuthenticating] = useState(true);
 
@@ -35,15 +39,20 @@ export default function SpotifyLoginButton() {
     }
     
     return (
-        <>
-            {!isLoggedIn && 
-                <a>
-                    <button
-                        onClick={handlePkceLogin}
-                    >
-                        Login to Spotify to Search
-                    </button>
-                </a>}
-        </>
+        <div className={className}>
+            <div className='w-81 mx-auto'>
+                <div className='w-full px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 transition text-center mt-6'>
+                    {!isLoggedIn && 
+                        <a>
+                            <button
+                                onClick={handlePkceLogin}
+                            >
+                                Login to Spotify to Search
+                            </button>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
     )
 }

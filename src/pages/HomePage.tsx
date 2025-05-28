@@ -6,13 +6,13 @@ export default function HomePage() {
     let isAuthenticated = localStorage.getItem('isLoggedIn');
     
     return (
-        <>
+        <div>
             <Header />
             {isAuthenticated ? (
-                <SpotifySearchForm />
+                <SpotifySearchForm className='flex flex-col' />
             ) : (
                 <SpotifyLoginButton />
             )}
-        </>
+        </div>
     )
 }

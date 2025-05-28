@@ -2,7 +2,11 @@ import { useNavigate } from "react-router";
 import { useState } from 'react';
 import { getSpotifyData } from '../spotify/spotifyHttpRequests';
 
-export default function SearchForm() {
+type SearchFormProps = {
+    className?: string;
+};
+
+export default function SearchForm({ className }: SearchFormProps) {
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
     
@@ -35,21 +39,23 @@ export default function SearchForm() {
     }
 
     return (
-        <form onSubmit={handleSubmission}>
-            <input
-                type='search'
-                id='artist'
-                name='artist'
-                placeholder='Search an artist to discover their genre(s)'
-                value={searchTerm}
-                onChange={handleInputChange}
-            />
-            <input
-                type='submit'
-                id='submit'
-                name='submit'
-                value='Search'
-            />
+        <form className={className} onSubmit={handleSubmission}>
+            <div className='w-81 mx-auto flex flex-col gap-3 mb-6 mt-6'>
+                <input
+                    className='w-full px-4 py-2 rounded-xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700'
+                    type='search'
+                    id='artist'
+                    name='artist'
+                    placeholder='Enter an artist to search'
+                    value={searchTerm}
+                    onChange={handleInputChange}
+                />
+                <a className='w-full px-4 py-2 rounded-xl bg-blue-600 text-white font-semibold shadow-md hover:bg-blue-700 transition text-center'>
+                    <button>
+                        Search
+                    </button>
+                </a>
+            </div>
         </form>
     )
 }

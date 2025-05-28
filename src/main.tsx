@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router';
 import { StrictMode } from 'react'
 import App from './App.js'
 import SpotifyResultsPage from './pages/SpotifyResultsPage';
+import './index.css';
 
 const root = document.getElementById('root');
 
