@@ -7,7 +7,7 @@ type HeaderProps = {
 export default function Header({ className }: HeaderProps) {
     return (
         <h1 className={className}>
-            <div className='text-center mt-6'>
+            <div className='text-center'>
                 <Link to='/'>Genre Identifier</Link>
             </div>
         </h1>    

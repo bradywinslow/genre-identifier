@@ -8,14 +8,13 @@ export default function SearchResults({ className }: SearchResultsProps) {
     const location = useLocation();
 
     const { spotifySearchResults } = location.state || {};
-    const { searchTerm } = location.state || {};
     
     const artistInfo = spotifySearchResults.artists.items[0];
 
     return (
         <div className={className}>
             {artistInfo && (
-                <div className='max-w-sm rounded-2xl overflow-hidden shadow-lg bg-white mb-6'>
+                <div className='max-w-sm rounded-2xl overflow-hidden shadow-lg bg-white'>
                     <div className='aspect-w-4 aspect-h-3'>
                         <img className='object-cover w-full h-full' src={artistInfo.images[1].url} alt='Artist photo'></img>
                     </div>
