@@ -4,10 +4,10 @@ import SpotifySearchResults from '../components/SpotifySearchResults';
 
 export default function ResultsPage() {
     return (
-        <div className='mx-auto w-100 p-6'>
+        <div className='mx-auto w-120 p-6'>
             <Header />
             <SpotifySearchForm className='flex flex-col'/>
-            <SpotifySearchResults />
+            <SpotifySearchResults/>
         </div>
     )
 }

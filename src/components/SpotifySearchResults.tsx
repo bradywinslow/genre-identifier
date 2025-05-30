@@ -14,7 +14,7 @@ export default function SearchResults({ className }: SearchResultsProps) {
     return (
         <div className={className}>
             {artistInfo && (
-                <div className='max-w-sm rounded-2xl overflow-hidden shadow-lg bg-white'>
+                <div className='max-w-sm rounded-2xl overflow-hidden shadow-lg bg-white mx-auto'>
                     <div className='aspect-w-4 aspect-h-3'>
                         <img className='object-cover w-full h-full' src={artistInfo.images[1].url} alt='Artist photo'></img>
                     </div>
