@@ -1,10 +1,6 @@
 import { useLocation } from 'react-router';
 
-type SearchResultsProps = {
-    className?: string;
-};
-
-export default function SearchResults({ className }: SearchResultsProps) {
+export default function SearchResults() {
     const location = useLocation();
 
     const { spotifySearchResults } = location.state || {};
@@ -12,7 +8,7 @@ export default function SearchResults({ className }: SearchResultsProps) {
     const artistInfo = spotifySearchResults.artists.items[0];
 
     return (
-        <div className={className}>
+        <div>
             {artistInfo && (
                 <div className='max-w-sm rounded-2xl overflow-hidden shadow-lg bg-white mx-auto'>
                     <div className='aspect-w-4 aspect-h-3'>
