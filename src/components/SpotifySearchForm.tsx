@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { useState } from 'react';
 import { getSpotifyData } from '../spotify/spotifyHttpRequests';
+import { useAuth } from '../context/AuthContext';
 
 type SearchFormProps = {
     className?: string;
@@ -9,13 +10,18 @@ type SearchFormProps = {
 export default function SearchForm({ className }: SearchFormProps) {
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
+
+    const { refreshToken, accessToken } = useAuth();
     
     const handleInputChange = (event: any) => {
         setSearchTerm(event.target.value);
     }
 
     const handleSearch = async (searchTerm: string) => {
-        const results = await getSpotifyData(searchTerm);
+        if (accessToken === null || refreshToken === null) {
+            return;
+        }
+        const results = await getSpotifyData(searchTerm, refreshToken, accessToken);
         return results;
     }
 

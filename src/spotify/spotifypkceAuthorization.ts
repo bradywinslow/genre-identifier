@@ -79,36 +79,21 @@ const exchangeAuthCodeForToken = async (code: string) => {
     }),
   }
 
-  const body = await fetch(url, payload);
-  const response = await body.json();
-  
-  if (response.access_token) {
-    localStorage.setItem('access_token', response.access_token);
-  };
-  if (response.refresh_token) {
-    localStorage.setItem('refresh_token', response.refresh_token);
-  };
-  if (response.expires_in) {
-    localStorage.setItem('expires_in', response.expires_in);
-  }
-
-  // Determine expiration time for when access_token will expire
-  const now = new Date().getTime() / 1000; // current time in seconds
-  const expiresIn = Number(response.expires_in);
-  
-  if (!isNaN(expiresIn)) {
-    const expirationTime = now + expiresIn;
-    localStorage.setItem('expiration_time', expirationTime.toString());
-  } else {
-    console.error('expires_in is not a valid number:', response.expires_in);
+  try {
+    const body = await fetch(url, payload);
+    const response = await body.json();
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.error('Error fetching data: ', error);
+    return null;
   }
 };
 
 // Function to get refresh token
-const refreshAccessToken = async () => {
-
+const refreshAccessToken = async (refreshToken: string) => {
     // refresh token that has been previously stored
-    const refreshToken = localStorage.getItem('refresh_token');
+    const token = refreshToken;
     const url = "https://accounts.spotify.com/api/token";
  
      const payload = {
@@ -118,17 +103,19 @@ const refreshAccessToken = async () => {
        },
        body: new URLSearchParams({
          grant_type: 'refresh_token',
-         refresh_token: refreshToken ?? '',
+         refresh_token: token ?? '',
          client_id: clientId
        }),
      }
-     const body = await fetch(url, payload);
-     const response = await body.json();
- 
-     localStorage.setItem('access_token', response.access_token);
-     if (response.refresh_token) {
-       localStorage.setItem('refresh_token', response.refresh_token);
-     }
+
+    try {
+      const body = await fetch(url, payload);
+      const response = await body.json();
+      return response;
+    } catch (error) {
+      console.error('Error fetching data: ', error);
+      return null;
+    }
 };
 
 export { handlePkceLogin, exchangeAuthCodeForToken, refreshAccessToken };

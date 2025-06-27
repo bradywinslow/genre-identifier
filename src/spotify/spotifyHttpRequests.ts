@@ -1,7 +1,7 @@
 import { refreshAccessToken } from '../spotify/spotifypkceAuthorization';
 
 // Check whether access token has or is about to expire; if so, refresh it
-const maybeRefreshAccessToken = async () => {
+const maybeRefreshAccessToken = async (refreshToken: string) => {
     const expirationTimeStr = localStorage.getItem('expiration_time');
     const now = new Date().getTime() / 1000; // current time in seconds
 
@@ -9,18 +9,17 @@ const maybeRefreshAccessToken = async () => {
 
     if (expirationTime && now >= expirationTime - 300) {
         console.log('Access token expired or about to expire, refreshing...');
-        await refreshAccessToken();
+        await refreshAccessToken(refreshToken);
     }
 };
 
-const getSpotifyData = async (searchTerm: string) => {
-    let accessToken = localStorage.getItem('access_token');
+const getSpotifyData = async (searchTerm: string, refreshToken: string, accessToken: string) => {
     const TRACKLIST_ENDPOINT = 'https://api.spotify.com/v1/search';
     const urlToFetch = `${TRACKLIST_ENDPOINT}?q=${encodeURIComponent(searchTerm)}&type=artist`;
 
     try {
         // Check for token expiration before making the API call
-        await maybeRefreshAccessToken();
+        await maybeRefreshAccessToken(refreshToken);
       
         const response = await fetch(urlToFetch, {
             method: 'GET',
@@ -42,4 +41,4 @@ const getSpotifyData = async (searchTerm: string) => {
     }
 };
 
-export { getSpotifyData };
+export { maybeRefreshAccessToken, getSpotifyData };
