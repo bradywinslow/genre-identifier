@@ -1,4 +1,3 @@
-import 'react-toggle/style.css';
 import { MdLightMode, MdDarkMode } from 'react-icons/md';
 import { useDarkMode } from '../context/ThemeContext';
 
