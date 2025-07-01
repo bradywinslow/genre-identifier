@@ -1,5 +1,7 @@
 // Spotify Autohrization Code with PKCE Flow documentation: https://developer.spotify.com/documentation/web-api/tutorials/code-pkce-flow
 
+import { generateRandomString, sha256, base64encode } from '../utils/loginUtils';
+
 // Spotify application details
 const clientId = '78c0de151a834520bebb7c0b1509b3d7';
 const getRedirectUri = () => {
@@ -13,28 +15,6 @@ const redirectUri = getRedirectUri();
 
 const scope = 'playlist-modify-private playlist-modify-public user-read-private user-read-email';
 const authUrl = new URL('https://accounts.spotify.com/authorize');
-
-// Function to generate a random string
-const generateRandomString = (length: number): string => {
-    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const values = crypto.getRandomValues(new Uint8Array(length));
-    return values.reduce((acc, x) => acc + possible[x % possible.length], "");
-};
-
-// Function to hash code verifier
-const sha256 = async (plain: string): Promise<ArrayBuffer> => {
-  const encoder = new TextEncoder()
-  const data = encoder.encode(plain)
-  return window.crypto.subtle.digest('SHA-256', data)
-};
-
-// Function to base64 encode the hash
-const base64encode = (input: ArrayBuffer): string => {
-  return btoa(String.fromCharCode(...new Uint8Array(input)))
-    .replace(/=/g, '')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_');
-};
 
 const handlePkceLogin = async () => {
   // Create code verifier and store in local storage
