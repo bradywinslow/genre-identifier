@@ -48,7 +48,7 @@ export default function SearchForm({ className }: SearchFormProps) {
         <form className={className} onSubmit={handleSubmission}>
             <div className='w-full mx-auto flex flex-col gap-3 mb-6 mt-6 px-6'>
                 <input
-                    className='px-4 py-2 rounded-xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700'
+                    className='px-4 py-2 rounded-xl border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700 dark:text-white'
                     type='search'
                     id='artist'
                     name='artist'

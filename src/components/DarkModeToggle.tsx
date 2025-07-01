@@ -15,9 +15,9 @@ export default function DarkModeToggle() {
     return (
         <button onClick={handleDarkMode} className='flex flex-direction-row'>
             {darkMode ? (
-                <MdLightMode className='text-yellow-500 pl-[5px] pt-[4px] size-7' />
+                <MdLightMode className='text-yellow-500 size-7'/>
             ) : (
-                <MdDarkMode className='text-gray-500 pl-[5px] pt-[4px] size-7'/>
+                <MdDarkMode className='text-gray-500 size-7'/>
             )}
         </button>
     )

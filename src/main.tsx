@@ -13,7 +13,7 @@ ReactDOM.createRoot(root!).render(
   <BrowserRouter>
     <StrictMode>
       <ThemeProvider>
-        <div className='min-h-screen bg-white dark:bg-[#121212]'>
+        <div className='min-h-screen bg-white dark:bg-[#121212] text-[#121212] dark:text-white'>
           <AuthProvider>
             <Routes>
               <Route path='/' element={<App />}/>
