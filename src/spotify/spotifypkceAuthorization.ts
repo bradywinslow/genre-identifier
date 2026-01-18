@@ -6,9 +6,9 @@ import { generateRandomString, sha256, base64encode } from '../utils/loginUtils'
 const clientId = '78c0de151a834520bebb7c0b1509b3d7';
 const getRedirectUri = () => {
     const origin = window.location.origin;
-    /* if (origin.includes('5173')) {
+    if (origin.includes('5173')) {
         return 'http://127.0.0.1:5173';
-    } */
+    }
     return origin;
 };
 const redirectUri = getRedirectUri();
