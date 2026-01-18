@@ -21,11 +21,13 @@ Genre Identifier is a web application that allows users to log in to their Spoti
 - **Genre Display**: View a cleanly designed card with the artist’s photo, name, and genre(s).
 
 ## Technologies Used
-- TypeScript
 - React
+- TypeScript
 - React Router
+- OAuth 2.0
 - Tailwind CSS
-- Vercel
+- Vitest
+- Netlify
 
 ## Deploy Status
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8af52e0b-c68e-43f6-b264-475385c6a60c/deploy-status)](https://app.netlify.com/projects/genre-identifier/deploys)
