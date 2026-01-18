@@ -8,6 +8,10 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
+  server: {
+    host: '127.0.0.1',
+    port: 5173
+  },
   test: {
     coverage: {
       reporter: ['text', 'html'],

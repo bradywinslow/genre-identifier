@@ -5,10 +5,10 @@ import { generateRandomString, sha256, base64encode } from '../utils/loginUtils'
 // Spotify application details
 const clientId = '78c0de151a834520bebb7c0b1509b3d7';
 const getRedirectUri = () => {
-    const origin = window.origin;
-    if (origin.includes('localhost')) {
-        return 'http://localhost:5173';
-    }
+    const origin = window.location.origin;
+    /* if (origin.includes('5173')) {
+        return 'http://127.0.0.1:5173';
+    } */
     return origin;
 };
 const redirectUri = getRedirectUri();
@@ -62,7 +62,6 @@ const exchangeAuthCodeForToken = async (code: string) => {
   try {
     const body = await fetch(url, payload);
     const response = await body.json();
-    console.log(response);
     return response;
   } catch (error) {
     console.error('Error fetching data: ', error);
