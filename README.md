@@ -27,6 +27,9 @@ Genre Identifier is a web application that allows users to log in to their Spoti
 - Tailwind CSS
 - Vercel
 
+## Deploy Status
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8af52e0b-c68e-43f6-b264-475385c6a60c/deploy-status)](https://app.netlify.com/projects/genre-identifier/deploys)
+
 ## Getting Started
 To run Genre Identifier locally:
 
